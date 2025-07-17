@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For My Panda 🐼</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styling for the body */
+        body {
+            margin: 0;
+            padding: 0;
+            /* Softer gradient background for a cute look */
+            background: linear-gradient(135deg, #f8e6ff 0%, #e6faff 100%);
+            font-family: 'Comfortaa', cursive; /* A cute, rounded font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure it takes full viewport height */
+            overflow-y: auto; /* Allow vertical scrolling if content overflows */
+            color: #333; /* Darker text for readability */
+            position: relative; /* Needed for absolute positioning of floating elements */
+        }
+
+        /* Container for the letter itself */
+        .letter-container {
+            background: white;
+            /* Subtle paper texture background image */
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2l1bWZyZXF1ZW5jeT0iMC43NSIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmZiIgLz48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0idXJsKCNub2lzZSkib3BhY2l0eT0iMC4wNSIgLz48L2Z2Zz4=');
+            background-size: cover;
+            padding: 40px; /* Increased padding for more space */
+            border-radius: 25px; /* More rounded corners */
+            /* Softer, more diffused shadow, giving a lifted paper effect */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 650px; /* Slightly wider max-width */
+            position: relative;
+            /* Subtle rotation for a paper-like feel */
+            transform: rotate(-2deg);
+            animation: fadeInScale 1.5s ease-out forwards; /* Combined fade and scale animation */
+            text-align: center; /* Center align content */
+            border: 2px solid #c2a6e0; /* A slightly softer purple border */
+            overflow: hidden; /* Hide overflow for decorative elements */
+            z-index: 10; /* Ensure it's above floating elements */
+            margin: 20px auto; /* Add some vertical margin for scrollability on smaller screens */
+        }
+
+        /* Animation for the letter container */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(30px) scale(0.95) rotate(-2deg); }
+            to { opacity: 1; transform: translateY(0) scale(1) rotate(-2deg); }
+        }
+
+        /* Styling for the main heading */
+        h1 {
+            color: #9c27b0; /* A slightly deeper purple shade */
+            font-size: 2.8em; /* Larger heading */
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block; /* To allow pseudo-elements to position relative to it */
+        }
+
+        /* Decorative heart elements around the heading */
+        h1::before, h1::after {
+            content: '💖'; /* Heart emoji */
+            font-size: 0.7em;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+            animation: pulse 1.5s infinite alternate; /* Gentle pulse animation */
+        }
+
+        h1::before {
+            left: -35px;
+        }
+
+        h1::after {
+            right: -35px;
+        }
+
+        /* Pulse animation for hearts */
+        @keyframes pulse {
+            from { transform: translateY(-50%) scale(1); }
+            to { transform: translateY(-50%) scale(1.1); }
+        }
+
+        /* Styling for the main message content */
+        .message {
+            font-size: 1.3em; /* Slightly larger font */
+            line-height: 1.7; /* Improved line spacing */
+            white-space: pre-wrap; /* Preserves whitespace and line breaks */
+            color: #555; /* Softer text color */
+            margin: 0 auto 30px auto; /* Center and add bottom margin */
+            max-width: 550px; /* Limit width for better readability */
+        }
+
+        /* Styling for the footer */
+        .footer {
+            margin-top: 30px;
+            text-align: right;
+            font-style: italic;
+            color: #9c27b0; /* Matching the heading color */
+            font-size: 1.1em;
+            position: relative;
+            padding-right: 40px; /* Space for the paw print */
+        }
+
+        /* Decorative paw print at the end of the footer */
+        .footer::after {
+            content: '🐾'; /* Paw print emoji */
+            font-size: 1.5em;
+            position: absolute;
+            right: 0;
+            bottom: -5px;
+            transform: rotate(-15deg); /* Slightly rotated for cuteness */
+            opacity: 0.8;
+        }
+
+        /* Music toggle button styling */
+        .music-toggle-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f8eafc; /* Light purple background */
+            color: #9c27b0; /* Purple icon */
+            border: none;
+            border-radius: 50%; /* Circular button */
+            width: 50px;
+            height: 50px;
+            font-size: 1.8em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            z-index: 11; /* Ensure it's above the letter container */
+        }
+
+        .music-toggle-button:hover {
+            transform: scale(1.05);
+            background-color: #e6cff2; /* Slightly darker on hover */
+        }
+
+        .music-toggle-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Floating hearts and sparkles animation */
+        .floating-element {
+            position: fixed; /* Use fixed to keep them in viewport regardless of scroll */
+            bottom: -20px; /* Start below the screen */
+            font-size: 1.5em;
+            opacity: 0;
+            animation: floatUp 6s ease-in-out infinite;
+            pointer-events: none; /* Make sure they don't block clicks */
+            z-index: 5; /* Below the letter container */
+        }
+
+        /* Define multiple animations for elements with different delays and positions */
+        .floating-element:nth-child(1) { left: 10%; animation-delay: 0s; transform: scale(0.8); color: #ff85a2; } /* Pink heart */
+        .floating-element:nth-child(2) { left: 25%; animation-delay: 1.5s; transform: scale(1.1); color: #ffd700; } /* Gold sparkle */
+        .floating-element:nth-child(3) { left: 40%; animation-delay: 3s; transform: scale(0.9); color: #ff85a2; } /* Pink heart */
+        .floating-element:nth-child(4) { left: 55%; animation-delay: 4.5s; transform: scale(1.2); color: #ffd700; } /* Gold sparkle */
+        .floating-element:nth-child(5) { left: 70%; animation-delay: 6s; transform: scale(0.7); color: #ff85a2; } /* Pink heart */
+        .floating-element:nth-child(6) { left: 85%; animation-delay: 7.5s; transform: scale(1.0); color: #ffd700; } /* Gold sparkle */
+        .floating-element:nth-child(7) { left: 5%; animation-delay: 2s; transform: scale(0.95); color: #ff85a2; } /* Pink heart */
+        .floating-element:nth-child(8) { left: 90%; animation-delay: 5s; transform: scale(0.85); color: #ffd700; } /* Gold sparkle */
+
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 25px;
+                transform: rotate(-1deg); /* Less rotation on smaller screens */
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            .message {
+                font-size: 1.1em;
+            }
+            .footer {
+                font-size: 1em;
+            }
+            h1::before, h1::after {
+                display: none; /* Hide hearts on very small screens if they crowd */
+            }
+            .music-toggle-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5em;
+                top: 15px;
+                right: 15px;
+            }
+            .floating-element {
+                font-size: 1em; /* Smaller elements on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container">
+        <!-- Music toggle button -->
+        <button id="music-toggle-button" class="music-toggle-button">
+            🔊 <!-- Speaker icon, initially unmuted -->
+        </button>
+
+        <!-- Audio element for background music -->
+        <audio id="background-music" loop>
+            <!-- Direct MP3 link from GitHub provided by the user -->
+            <source src="https://github.com/D3VALON3/audio-files/raw/refs/heads/main/Tera%20Ban%20Jaunga%20Whatsapp%20status%20%F0%9F%92%9C%20Kabir%20Singh%20_%20Nostalgic%20_%20Light%20-%20ranjit_Zuckyyy.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <h1>Dear Panda 🐼</h1>
+        <div class="message">
+            Log toh bas roop dekhte hain,<br>
+            Main toh tera dil dekhta hoon...<br>
+            Log sapne dekhte hain,<br>
+            Aur meri aankhon mein sirf tu hai.<br>
+            Fark bas itna sa hai—<br>
+            Jahan sab poori duniya dekhte hain,<br>
+            Wahin main poori duniya mein sirf tujhe dekhta hoon. 💖
+        </div>
+        <div class="footer">With 💖, Someone who only sees you</div>
+    </div>
+
+    <!-- Floating hearts and sparkles for extra cuteness -->
+    <div class="floating-element">💖</div>
+    <div class="floating-element">✨</div>
+    <div class="floating-element">💖</div>
+    <div class="floating-element">✨</div>
+    <div class="floating-element">💖</div>
+    <div class="floating-element">✨</div>
+    <div class="floating-element">💖</div>
+    <div class="floating-element">✨</div>
+
+    <script>
+        // Get references to the audio element and the button
+        const backgroundMusic = document.getElementById('background-music');
+        const musicToggleButton = document.getElementById('music-toggle-button');
+
+        // Variable to track if music is playing
+        let isPlaying = false;
+
+        // Function to toggle music playback
+        function toggleMusic() {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicToggleButton.textContent = '🔇'; // Muted speaker icon
+            } else {
+                // Play the music. Browsers often require user interaction to play audio.
+                // If it fails, it might be due to browser autoplay policies.
+                backgroundMusic.play().then(() => {
+                    musicToggleButton.textContent = '🔊'; // Unmuted speaker icon
+                }).catch(error => {
+                    console.error("Autoplay prevented:", error);
+                    // Optionally, inform the user that they might need to click again
+                    // or that autoplay was blocked.
+                });
+            }
+            isPlaying = !isPlaying; // Toggle the state
+        }
+
+        // Add event listener to the button
+        musicToggleButton.addEventListener('click', toggleMusic);
+
+        // Set default volume when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+             backgroundMusic.volume = 0.5; // Set a default volume
+        });
+    </script>
+</body>
+</html>
